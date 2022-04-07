@@ -1,9 +1,19 @@
-resource "tfe_registry_module" "module" {
-  for_each = var.modules
+data "azurerm_subscription" "current" {}
 
-  vcs_repo {
-    display_identifier = each.value
-    identifier         = each.value
-    oauth_token_id     = var.oauth_token_id
+resource "azuread_application_password" "password" {
+  application_object_id = azuread_application.app.id
+  display_name          = "Managed by Terraform"
+}
+
+resource "azuread_application" "app" {
+  display_name                   = "${var.project} (Managed by Terraform)"
+  fallback_public_client_enabled = false
+  prevent_duplicate_names        = true
+  sign_in_audience               = "AzureADMyOrg"
+
+  web {
+    implicit_grant {
+      access_token_issuance_enabled = false
+    }
   }
 }

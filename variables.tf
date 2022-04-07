@@ -1,10 +1,4 @@
-variable "modules" {
-  default     = {}
-  description = "(Optional) A map of friendly names to module identifiers for modules to add to the registry."
-  type        = map(string)
-}
-
-variable "oauth_token_id" {
-  description = "(Required) The organization name."
+variable "project" {
+  description = "(Required) The project name.  Used to generate the names for the application registration and other objects."
   type        = string
 }

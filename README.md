@@ -1,3 +1,3 @@
-# terraform-tfe-organization
+# terraform-azurerm-credentials
 
-Opinionated Terraform Cloud organization.
+Creates an App Registration/Service Principal with owner permissions on the supplied scopes.

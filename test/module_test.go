@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	// "github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCredentials(t *testing.T) {
@@ -17,4 +17,7 @@ func TestCredentials(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// TODO: Assertions
+	actualName := terraform.Output(t, terraformOptions, "credentials")
+
+	assert.Equal(t, "ws-test", actualName)
 }

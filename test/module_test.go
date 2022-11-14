@@ -21,3 +21,5 @@ func TestCredentials(t *testing.T) {
 
 	assert.Equal(t, "ws-test", actualName)
 }
+
+// TODO 1: Test that SP gets owner role on the test rg.
